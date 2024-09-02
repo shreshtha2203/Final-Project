@@ -1,0 +1,262 @@
+.navbar{
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    padding:0.5rem 1rem;
+    z-index: 999;
+ }
+.navbar-brand{
+    display:flex;
+    align-items: center;
+}
+.navbar-brand .first-half{
+    color:orange;
+    font-weight: bold;
+    font-style: normal;
+}
+.navbar-brand .second-half{
+    color:white;
+    font-style: normal;
+}
+.container-fluid{
+    height:calc(100vh);
+    /* overflow:hidden; */
+}
+.sidebar {
+    height: 100%;
+    position:fixed; 
+    top: calc(40px + 1rem);
+    padding: 1rem;
+    background-color: #f1f1f1;
+    width: 20vw;
+    overflow-y: auto;
+    overflow-x: auto;
+    
+}
+.sidebar h5{
+    font-weight:normal;
+    margin-bottom: 1rem;
+}
+.list-group-item{
+    border:none;
+    /* padding:0.75rem 1rem; */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    
+}
+.list-group-item:hover{
+    background-color:#e9ecef;
+    cursor: pointer;
+}
+
+.main-content {
+    font-weight:normal;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    position:relative;
+    width: 80vw;
+    height: calc(100vh - 40px - 1rem - 65px);
+    margin-top: calc(40px + 1rem);
+    margin-left: 20vw;
+    margin: calc(40px + 1rem) 0 65px 20vw;
+    padding: 20px 40px;
+    overflow: hidden;
+    
+}
+.main-content h1 {
+    font-size: 2.5rem;
+    color: #1a1b1b;
+    font-style:normal;
+    
+}
+
+.main-content h2 {
+    font-size: 3rem;
+    color: #0c0c0c;
+    font-weight:lighter;
+}
+
+.image-container {
+    background-image: url('../../assets/images/images.jpeg');
+    background-size: cover;
+    background-position: center;
+    padding: 40px;
+    max-width: 40%;
+    max-height: 50%;
+    height: 70%;
+    vertical-align: center;
+    margin-left:30%;
+    position: relative;
+    opacity: 100;
+    text-align: center;
+}
+.fixed-image{
+    width:50%;
+    height:50%;
+}
+.input-container {
+    position: fixed;
+    bottom: 45px;
+    right: 150px;
+    width: 80%;
+    max-width: 800px;
+    display: flex;
+    z-index: 999;
+    
+}
+
+.input-field {
+    display: flex;
+    flex-direction: row;
+    width:100%;
+    padding: 10px 40px 10px 20px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+}
+
+.send-button, .camera-button,.microphone-button{
+    position:absolute;
+    cursor: pointer;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    padding:0;
+    border: none;
+    border-radius: none;
+}
+
+
+.send-button i, .camera-button i, .microphone-button{
+    color: #555;
+}
+.send-button{
+    right:80px;
+    padding: 10px;
+    
+}
+.camera-button{
+    right:40px;
+    padding: 10px;
+}
+.microphone-button{
+    right:5px;
+    padding:10px;
+}
+
+
+
+.container{
+    margin-right: 10px;
+}
+
+.loading-overlay {
+    width: 100%;
+    height: 80%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.questions-area{
+    width:80%;
+    margin-bottom: 10%;
+   }   
+.user-question{
+    margin-top: 5px;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+.ai-response{
+    margin-top: 10px;
+    font-size: large;
+}
+.tab-container {
+    width: 100%;
+    background-color: hsla(0, 8%, 95%, 0.884); /* Light grey background color */
+    padding: 10px;
+    border-radius: 5px;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+}
+
+.tab-header {
+    display: flex;
+    align-items: center;
+}
+
+.tab-title {
+    font-weight: bold;
+    margin-right: 20px;
+    font-size: 18px;
+}
+.nav-link{
+    color:black;
+}
+.nav-link.active{
+    color: blue;
+}
+
+.message {
+    border-radius: 10px;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+  }
+  
+  .user-message {
+    text-align: left;
+  }
+  
+  .response-section .tabs {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .tab-content {
+    margin-top: 20px;
+    justify-content: flex-end;
+  }
+  .tab-content .video-container {
+    display: flex;
+    flex-wrap: nowwrap;
+    justify-content: center;
+    overflow-x: auto;
+    /* grid-template-columns: repeat(auto-fill, minmax(calc(50% - 8px), 1fr)); */
+    gap: 16px; 
+}
+
+.tab-content iframe {
+    width: 40%; 
+    height: 180px; 
+    margin-bottom: 10px; 
+    border: 0; 
+}
+
+@media (max-width: 768px) {
+    .tab-content .video-container {
+        /* grid-template-columns: 1fr;  */
+        /* justify-content: flex-start; */
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .tab-content iframe {
+        margin-bottom: 10px; 
+    }
+}
+
+.question-block {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+
+
+
+
+/* https://asia-south1-blp-iai.cloudfunctions.net/Maruthi_Gen_ai */
+/* {"question":'hello'} */

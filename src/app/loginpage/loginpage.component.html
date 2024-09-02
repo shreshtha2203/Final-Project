@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="image-container">
+    .
+  </div>
+  <div class="loginForm-container">
+    <h1 class="logo-image"></h1>
+      <!-- <form action="/loginForm" method="post"> -->
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" formControlName="username" class="form-control" required>
+          <div *ngIf="loginForm.controls['username'].invalid && (loginForm.controls['username'].dirty || loginForm.controls['username'].touched)">
+            <div *ngIf="loginForm.controls['username'].errors?.['required']">Username is required.</div>
+            <div *ngIf="loginForm.controls['username'].errors?.['pattern']">Username format is invalid.</div>
+        </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" formControlName="password" required>
+          <div *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">
+            <div *ngIf="loginForm.controls['password'].errors?.['required']">Password is required.</div>
+            <div *ngIf="loginForm.controls['password'].errors?.['pattern']">Password format is invalid.</div>
+          </div>
+        </div>
+          <div class="remember-me">
+              <input type="checkbox" id="remember" name="remember">
+              <label for="remember">Remember me</label>
+              <a href="#" class="forgot-password">Forgot Password?</a>
+          </div>
+          <button type="button" class="btn btn-primary" [disabled]="loginForm.invalid" (click)="onSubmit()">Sign in</button>
+      </form>
+      <p>Copyright &#64; 2021 BLP Industry.AI. All rights reserved</p>
+  </div>
+</div>
+

@@ -1,0 +1,156 @@
+/* body {
+  font-family: 'sfpro-r', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+  text-align: center; 
+  font-size: 15px;
+  color: #726f6f;
+} */
+/* header {
+  width: 100%;
+  margin: 40px 0;
+}
+
+.centered-heading {
+  margin: 0;
+  font-size: 2em;
+} */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  font-family: 'sfpro-r', sans-serif;
+  font-size: 13px;
+  color: #726f6f;
+}
+
+.image-container {
+  width: 550px;
+  height: 550px;
+  background-image: url('../../assets/images/chatbot.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 50px;
+}
+
+/* .image-container img {
+  width: 200%;
+  height: 100%;
+  object-fit: cover;
+} */
+
+.loginForm-container {
+  flex: 1;
+  padding: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  max-width: 50%;
+  box-sizing:border-box;
+}
+.logo-image {
+  max-width: 70%;
+  max-height: 70%;
+  height: 70px;
+  margin-right: 150px;
+  vertical-align: center;
+  background-image: url('../../assets/images/logo.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+h1 {
+  display: flex; /* Allows the heading to accommodate both text and image */
+  align-items: center; /* Centers items vertically */
+}
+
+/* .login-container h2 {
+  margin-bottom: 20px;
+  color: #333;
+} */
+
+ form label {
+  margin: 10px 0 5px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.loginForm-container input[type="text"],
+.loginForm-container input[type="password"] {
+  width: 70%;
+  padding: 15px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #cdf5f3;
+}
+.loginForm-container button {
+  width: 70%;
+  padding: 10px;
+  background-color: #007bff; /* Blue primary color, adjust as per your design */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.loginForm-container button:disabled {
+  background-color: #ccc; /* Disable state color */
+  cursor: not-allowed;
+}
+.loginForm-container .remember-me {
+  display: flex;
+  align-items: center;
+  padding-top:20px;
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+
+.loginForm-container .remember-me input {
+  margin-right: 5px;
+}
+.loginForm-container .forgot-password {
+    display: block;
+    margin-top: 5px;
+    color: #0b0c0e;
+    text-decoration: none;
+    margin-left: 130px;
+}
+
+.loginForm-container .forgot-password:hover {
+    text-decoration: underline;
+}
+
+/* .loginForm-container form button {
+  padding: 10px;
+  background-color: #4d85ec;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.loginForm-container button:hover {
+  background-color: #5e44f7;
+} */
+
+.loginForm-container p {
+  margin-top: 40px;
+  font-size: 15px;
+}
+/* 
+.login-container a {
+  color:rgb(81, 81, 230);
+  text-decoration: none;
+}
+
+.login-container a:hover {
+  text-decoration: underline;
+} */

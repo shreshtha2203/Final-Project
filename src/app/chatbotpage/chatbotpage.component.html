@@ -1,0 +1,124 @@
+
+    <title>Ask.AI</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
+    <nav class="navbar navbar-expand-sm navbar-light bg-primary">
+        <a class="navbar-brand text-white" href="#">
+            <i class="first-half">Ask</i>
+            <i class="second-half">.AI</i>
+        </a>
+        <div class="container">
+            <div class="dropdown"></div>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link text-white" href="#">User Manual</a>
+                </li>
+                <li class="nav-item dropdown mt-1">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="#">User Manual</a>
+                        <a class="dropdown-item" href="#">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="bg-light sidebar">
+        <h5 class="mt-2">Suggested Questions</h5>
+         <li class="list-group-item" *ngFor="let qa of question_answer_list">
+                <div class="question">{{qa.question}}</div>
+                <div class="timestamp">{{qa.timestamp.toDate()|date:'short'}}</div>
+            </li>
+            <ul id="suggestedQuestions" class="list-group">
+                <li class="list-group-item" *ngFor="let question of suggestedQuestions" (click)="handleSuggestedQuestionClick(question.text)">{{question.text}}</li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div *ngIf="!isLoading" class="blank">
+            <div class="mt-2 text-container">
+                <h1 class="text-left font-weight-normal">Hello</h1>
+                <h2 class="font-weight-bold font-size-18 text-left">How can I help you?</h2>
+            </div>
+            <div class="image-container mt-5 fixed-image"></div>
+        </div>
+        <div *ngIf="isLoading" class="loading-overlay">
+            <div class="questions-area">
+                <div *ngFor="let qnr of question_answer_list ; let i=index">
+                <div class="user-question">
+                    <p><strong>You:</strong> {{qnr.question}}</p>
+                </div>
+                <!-- <div class="messages-container">
+                    <div *ngFor="let message of messages" class="message" [ngClass]="{ 'user-message': message.isUser }">
+                        {{ message.text }}
+                    </div>
+                </div> -->
+                <div class="ai-response">
+                    <div class="tab-container">
+                        <div class="tab-header d-flex justify-content-between align-items-center text-small">
+                            <span class="tab-title">Ask.AI</span>
+                            <div class="tabs">
+                                <button class="btn btn-light" [class.active]="qnr.selectedTab === 'summary'" (click)="selectTab(i,'summary')">Summary</button>
+                                <button class="btn btn-light" [class.active]="qnr.selectedTab === 'details'" (click)="selectTab(i,'details')">Details</button>
+                                <button class="btn btn-light" [class.active]="qnr.selectedTab === 'images'" (click)="selectTab(i,'images')">Images</button>
+                                <button class="btn btn-light" [class.active]="qnr.selectedTab === 'pages'" (click)="selectTab(i,'pages')">Pages</button>
+                                <button class="btn btn-light" [class.active]="qnr.selectedTab === 'videos'" (click)="selectTab(i,'videos')">Videos</button>
+                                <button class="btn btn-light" [class.active]="qnr.selectedTab === 'graphs'" (click)="selectTab(i,'graphs')">Graphs</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-content" id="myTabContent">
+                        <div *ngIf="qnr.selectedTab === 'summary'">{{qnr.response.summary}}</div>
+                        <div *ngIf="qnr.selectedTab === 'details'">{{qnr.response.details}}</div>
+                        <div *ngIf="qnr.selectedTab === 'images'">
+                            <div *ngFor="let image of qnr.response.images">
+                                <img [src]="image.src" [alt]="image.description" class="img-fluid" frameborder="0" allowfullscreen>
+                            </div>
+                        </div>
+                        <div *ngIf="qnr.selectedTab === 'pages'">
+                            <div *ngIf="qnr.response.pages.length > 0">
+                                <div *ngFor="let page of qnr.response.pages">
+                                    <p>Page {{ page.page_number }}</p>
+                                    <img [src]="page.page_src" alt="PDF Page Image">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex-container">
+                        <div *ngIf="qnr.selectedTab === 'videos'">
+                            <div *ngIf="qnr.response.videos.length > 0">
+                                <div *ngFor="let video of qnr.response.videos; let i=index">
+                                    <iframe [src]="videoUrl" frameborder="0" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                            <div *ngIf="qnr.response.videos.length === 0">
+                                <p>No videos available.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                        <div *ngIf="qnr.selectedTab === 'graphs'">{{qnr.response.graphs}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="input-container">
+        <input type="text" [(ngModel)]="newQuestion" (keyup.enter)="addQuestion()" placeholder="Enter a prompt here..." class="input-field form-control" />
+        <button (click)="addQuestion()" [disabled]="isLoading" class="send-button btn btn-light">
+            <i class="fas fa-paper-plane" *ngIf="!isLoading"></i>
+            <span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        </button>
+        <button class="camera-button btn btn-light"><i class="fas fa-camera"></i></button>
+        <button class="microphone-button btn btn-light"><i class="fas fa-microphone"></i></button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
